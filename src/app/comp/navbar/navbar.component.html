@@ -25,6 +25,7 @@
       </ul>
       <div *ngIf="user != null; else loginLink">
         <span class="navbar-text">Welcome, {{ user.nome }}</span>
+        <button class="btn-link btn" (click)="logout()">Logout</button>
       </div>
       <ng-template #loginLink>
         <a class="nav-link" routerLink="/login" routerLinkActive="active">
