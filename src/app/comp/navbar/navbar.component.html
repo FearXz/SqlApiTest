@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">ToDo</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,28 +15,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/">Home</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/tasks" routerLinkActive="active"
             >Task</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active"
-            >Login</a
-          >
-        </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div *ngIf="user != null; else loginLink">
+        <span class="navbar-text">Welcome, {{ user.nome }}</span>
+      </div>
+      <ng-template #loginLink>
+        <a class="nav-link" routerLink="/login" routerLinkActive="active">
+          Login
+        </a>
+      </ng-template>
     </div>
   </div>
 </nav>
