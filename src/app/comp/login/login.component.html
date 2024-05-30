@@ -7,13 +7,23 @@
       class="form-control"
       id="username"
       aria-describedby="usernameHelp"
+      name="username"
+      [(ngModel)]="username"
     />
     <div id="usernameHelp" class="form-text"></div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" />
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="password"
+      [(ngModel)]="password"
+    />
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="submitLogin()">
+    Submit
+  </button>
 </form>
