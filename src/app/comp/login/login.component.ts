@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Login } from '../../../interfaces/Login';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   username!: string;
   password!: string;
 
@@ -21,12 +21,12 @@ export class LoginComponent {
       password: this.password,
     };
 
-    this.authSvc.login(loginData).subscribe((user) => {
-      if (!user) return;
-
-      let expires = new Date(Date.now() + 1000 * 60 * 30);
-      Cookies.set('user', JSON.stringify(user), { expires });
-      this.router.navigate(['/tasks']);
+    this.authSvc.login(loginData).subscribe((isLoggedIn) => {
+      if (isLoggedIn) this.router.navigate(['/tasks']);
     });
+  }
+
+  ngOnInit(): void {
+    this.authSvc;
   }
 }
