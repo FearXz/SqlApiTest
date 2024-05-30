@@ -3,12 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './comp/login/login.component';
 import { TasksComponent } from './comp/tasks/tasks.component';
 import { RoutingGuardGuard } from './services/routing-guard.guard';
+import { HomeComponent } from './comp/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'login',
